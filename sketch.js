@@ -20,15 +20,23 @@ let averageRolls = 0;
 let avgP;
 
 function setup() {
-  createCanvas(800, 800);
+  canheightwid = 700;
+  createCanvas(canheightwid, canheightwid);
   canvas = document.getElementById("defaultCanvas0");
   context = canvas.getContext('2d');
+  var background = new Image();
+  background.src = "Board.jpeg";
+
+  // Make sure the image is loaded first otherwise nothing will draw.
+  background.onload = function(){
+  context.globalCompositeOperation='destination-over';
+  context.drawImage(background,0,0, canheightwid, canheightwid);}
   avgP = createP('');
 
   rolls[index] = 0;
 
   // Size of tile, columns and rows
-  let resolution = 80;
+  let resolution = 70;
   let cols = width / resolution;
   let rows = height / resolution;
 
@@ -73,10 +81,11 @@ function setup() {
 function draw() {
   // frameRate(5);
   background(5);
+  //context.globalAlpha = 1;
 
   // Draw all the tiles, snakes, and ladders
   for (let tile of tiles) {
-    tile.show();
+    tile.show(context);
   }
   for (let tile of tiles) {
     
@@ -127,4 +136,5 @@ function draw() {
   if (avg) {
     avgP.html(avg);
   }
+
 }

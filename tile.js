@@ -26,8 +26,9 @@ class Tile {
   }
 
   // Draw rectangle
-  show() {
+  show(context) {
     fill(this.color);
+    context.globalAlpha = 1;
     noStroke();
     rect(this.x, this.y, this.wh, this.wh);
   }
@@ -49,7 +50,7 @@ class Tile {
       } else {
         context.fillStyle = "red";
       }
-      console.log(myCenter);
+      //console.log(myCenter);
       context.fillText(this.text, myCenter[0] - 10, myCenter[1]);
 
     }
