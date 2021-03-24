@@ -25,12 +25,12 @@ function setup() {
   canvas = document.getElementById("defaultCanvas0");
   context = canvas.getContext('2d');
   var background = new Image();
-  background.src = "Board.jpeg";
+  background.src = "Boardnew.jpeg";
 
   // Make sure the image is loaded first otherwise nothing will draw.
-  background.onload = function(){
-  context.globalCompositeOperation='destination-over';
-  context.drawImage(background,0,0, canheightwid, canheightwid);}
+ // background.onload = function(){
+  //context.globalCompositeOperation='destination-over';
+  //context.drawImage(background,0,0, canheightwid, canheightwid);}
   avgP = createP('');
 
   rolls[index] = 0;
@@ -135,6 +135,20 @@ function draw() {
   let avg = sum / (rolls.length - 1);
   if (avg) {
     avgP.html(avg);
+  }
+
+  function startGame() {
+    myGamePiece = new component(30, 30, "smiley.gif", 10, 120, "image");
+    myBackground = new component(656, 270, "citymarket.jpg", 0, 0, "image");
+    myGameArea.start();
+  }
+  
+  function updateGameArea() {
+    myGameArea.clear();
+    myBackground.newPos();
+    myBackground.update();
+    myGamePiece.newPos();
+    myGamePiece.update();
   }
 
 }

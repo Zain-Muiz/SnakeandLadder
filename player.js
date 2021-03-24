@@ -52,7 +52,6 @@ class Player {
       let current = tiles[this.spot];
       // Just get out of here if it's not a valid tile
       if (!current) return;
-      context.globalAlpha = 10;
       fill(255);
       stroke(0);
       let center = current.getCenter();

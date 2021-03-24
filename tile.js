@@ -28,7 +28,7 @@ class Tile {
   // Draw rectangle
   show(context) {
     fill(this.color);
-    context.globalAlpha = 1;
+    //context.globalAlpha = 1;
     noStroke();
     rect(this.x, this.y, this.wh, this.wh);
   }
